@@ -1,6 +1,7 @@
 package com.developer.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -26,8 +27,17 @@ public Developer  addDeveloper(Developer developer){
 public List<Developer> getAllDevelopers(){
     return getDeveloperRepository().findAll();
 }
+public Optional<Developer> getDeveloper(int devId)
+{
+	Optional<Developer> retreiveddev=getDeveloperRepository().findById(devId);
+	return retreiveddev;
+}
 
-
+public Developer editDeveloper(Developer developer)
+{
+	getDeveloperRepository().save(developer);
+	return developer;
+}
 public 	DeveloperRepository getDeveloperRepository() {
     return developerrepository;
 }
